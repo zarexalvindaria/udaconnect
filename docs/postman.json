@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: http://localhost:30010
+paths:
+  /api/persons:
+    get:
+      description: Auto generated using Swagger Inspector
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+              examples:
+                '0':
+                  value: >
+                    [{"id": 5, "company_name": "Alpha Omega Upholstery",
+                    "first_name": "Taco", "last_name": "Fargo"}, {"id": 6,
+                    "company_name": "USDA", "first_name": "Frank", "last_name":
+                    "Shader"}, {"id": 1, "company_name": "Hampton, Hampton and
+                    McQuill", "first_name": "Pam", "last_name": "Trexler"},
+                    {"id": 8, "company_name": "Paul Badman & Associates",
+                    "first_name": "Paul", "last_name": "Badman"}, {"id": 9,
+                    "company_name": "The Chicken Sisters Restaurant",
+                    "first_name": "Otto", "last_name": "Spring"}, {"id": 2,
+                    "company_name": "Tender Juicy", "first_name": "Aljur",
+                    "last_name": "Abrenica"}, {"id": 3, "company_name":
+                    "Momzillas", "first_name": "Kylie", "last_name": "Padilla"},
+                    {"id": 4, "company_name": "Chick Fillet", "first_name":
+                    "AJ", "last_name": "Raval"}]
+      servers:
+        - url: http://localhost:30010
+    servers:
+      - url: http://localhost:30010
+	  
+	  
+----
+
+openapi: 3.0.1
+info:
+  title: defaultTitle
+  description: defaultDescription
+  version: '0.1'
+servers:
+  - url: http://localhost:30010
+paths:
+  /api/persons:
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                company_name:
+                  type: string
+                last_name:
+                  type: string
+                first_name:
+                  type: string
+            examples:
+              '0':
+                value: "  {\r\n        \"last_name\": \"Raval\",\r\n        \"company_name\": \"Chick Fillet\",\r\n        \"first_name\": \"AJ\"\r\n    }\r\n"
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  company_name:
+                    type: string
+                  last_name:
+                    type: string
+                  id:
+                    type: integer
+                  first_name:
+                    type: string
+              examples:
+                '0':
+                  value: >
+                    {"id": 7, "company_name": "Chick Fillet", "first_name":
+                    "AJ", "last_name": "Raval"}
+      servers:
+        - url: http://localhost:30010
+    servers:
+      - url: http://localhost:30010
