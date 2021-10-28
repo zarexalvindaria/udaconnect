@@ -1,19 +1,20 @@
 Refactoring Decisions:
 
-1. I have kept the connection service as is in the main application--no refactor done.
-2. I have created a persons microservice which uses the REST API message passing.
+1. I have created a separate connection microservice using the REST API message passing.
+2. I have created a separate persons microservice which uses the REST API message passing.
 3. I have created a separate locations microservice which uses the gRPC and Kafka message passing.
 
 Decision Justifications:
 
-1. Since there is a strong dependency in the connections service, I have kept it as is in the main application. Besides, it's 
-only purpose is to connect the persons and locations table so keeping it as is is a good decision.
+1. I have created a connection microservice using the REST API for lesser complexity when the users access the website.
+I did the connection microservice refactor after the persons and location microservice. Since it's customer-facing, 
+using REST would be a good idea to choose as the message passing option.
 
 2. I have created a persons microservice since there's not much dependency on it in the main application. Designing a RESTful
 API would be suitable in this case since it's necessary to get and post persons data via http. Also, it's necessary to treat
-every request independent so I find REST API applicable.
+every request independent so I find the RESTful API applicable.
 
 3. Since location should be gathered simultaneously by the mobile device, it is necessary to use a message queue such as Kafka
 in this case. Using Kafka will help process each location even if the volume grows--a problem that needs to solved by the
 refactoring. Additionally, to make sure that the data is properly structured before passing to the database, putting gRPC 
-before Kafka is crucial. This will not only ensure security but it will also ensure speed in passing the data.
+before Kafka is crucial. This will not only ensure security, but it will also ensure speed in passing the data.

@@ -29,7 +29,7 @@ def _add_to_location(location: Dict):
     cursor.close()
     session.close()  # Close the session
 
-    print("Message added to db!")
+    print("Message added to the database!")
     return location
 
 

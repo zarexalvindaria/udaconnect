@@ -13,7 +13,7 @@ stub = location_pb2_grpc.LocationServiceStub(channel)
 location = location_pb2.LocationMessage(
 
     # id int = 4, -- delete since auto generated
-    person_id=3,
+    person_id=1,
     latitude=14.67202413207315,
     longitude=121.03856982696303
 )

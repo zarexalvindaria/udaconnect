@@ -1,3 +1,4 @@
+"""
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_restx import Api
@@ -24,3 +25,4 @@ def create_app(env=None):
         return jsonify("healthy")
 
     return app
+"""
