@@ -107,13 +107,17 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 
    	`kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka`
    - Once kafka is ready, start sending and receiving messages.
-      	- Create a producer
+
+**Create a producer**
 
    		`kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic location`
-   	- Create a consumer
-   		`kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic location --from-beginning`
 
-12. The commands I used are also found in udaconnect-project/scripts/deployment_build.sh
+<br/>
+
+**Create a consumer**
+	`kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic location --from-beginning`
+
+12. The commands used are also found under *udaconnect-project/scripts/deployment_build.sh*
 
 Manually applying each of the individual `yaml` files is cumbersome but going through each step provides some context on the content of the starter project. In practice, we would have reduced the number of steps by running the command against a directory to apply of the contents: `kubectl apply -f deployment/`.
 
