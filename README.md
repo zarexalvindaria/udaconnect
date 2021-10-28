@@ -115,7 +115,7 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 <br/>
 
 **Create a consumer**
-	`kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic location --from-beginning`
+   		`kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic location --from-beginning`
 
 12. The commands used are also found under *udaconnect-project/scripts/deployment_build.sh*
 
