@@ -10,7 +10,6 @@ spec:
     port: 6666
   selector:
     service: udaconnect-location-consumer
-
   type: NodePort
 ---
 apiVersion: apps/v1
