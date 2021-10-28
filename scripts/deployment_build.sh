@@ -28,20 +28,17 @@ python -m grpc_tools.protoc -I./ --python_out=./ --grpc_python_out=./ location.p
  docker push zarexalvindaria/location-producer:latest
 
 #Installing and activating kafka
-1. Create kafka namespace
-kubectl create namespace kafka
+1. Create kafka namespace and install Strimzi files
+`kubectl apply -f deployment/udaconnect-kafka.yaml`
 
-2. Apply Strimzi install files
-kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka
-
-3. Provision Kafka cluster
+2. Provision Kafka cluster
 # Apply the `Kafka` Cluster CR file
 kubectl apply -f https://strimzi.io/examples/latest/kafka/kafka-persistent-single.yaml -n kafka
 
 #We now need to wait while Kubernetes starts the required pods, services and so on:
 kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka
 
-4. Send and receive messages
+3. Send and receive messages
 # create a producer
 kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic location
 

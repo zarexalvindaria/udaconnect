@@ -97,18 +97,18 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 10. `sh scripts/run_db_command.sh <POD_NAME>` - Seed your database against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`)
 
 11. Install and activate kafka using Strimzi
-   - Create the kafka namespace
-   	`kubectl create namespace kafka`
-   - Apply Strimzi install files
+   - Create the kafka namespace and install Strimzi files
 
-    	`kubectl create -f 'https://strimzi.io/install/latest?namespace=kafka' -n kafka`
+   	`kubectl apply -f deployment/udaconnect-kafka.yaml`
    - Provision Kafka cluster
 
     	`kubectl apply -f https://strimzi.io/examples/latest/kafka/kafka-persistent-single.yaml -n kafka`
    - (Wait while Kubernetes starts the required pods, services and so on)
+
    	`kubectl wait kafka/my-cluster --for=condition=Ready --timeout=300s -n kafka`
    - Once kafka is ready, start sending and receiving messages.
-   	- Create a producer
+      	- Create a producer
+
    		`kubectl -n kafka run kafka-producer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic location`
    	- Create a consumer
    		`kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kafka-3.0.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic location --from-beginning`
