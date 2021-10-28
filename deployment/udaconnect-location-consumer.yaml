@@ -8,8 +8,6 @@ spec:
   ports:
   - name: "6666"
     port: 6666
-    targetPort: 6666
-    nodePort: 30040
   selector:
     service: udaconnect-location-consumer
 
