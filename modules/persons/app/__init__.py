@@ -14,7 +14,7 @@ def create_app(env=None):
     app.config.from_object(config_by_name[env or "test"])
     api = Api(app, title="UdaConnect API", version="0.1.0")
 
-    CORS(app)  # Set CORS for development
+    CORS(app)
 
     register_routes(api, app)
     db.init_app(app)

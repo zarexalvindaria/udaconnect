@@ -8,11 +8,7 @@ print("Sending sample payload...")
 channel = grpc.insecure_channel("localhost:30020")
 stub = location_pb2_grpc.LocationServiceStub(channel)
 
-
-# Update this with  payload
 location = location_pb2.LocationMessage(
-
-    # id int = 4, -- delete since auto generated
     person_id=1,
     latitude=14.67202413207315,
     longitude=121.03856982696303

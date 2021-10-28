@@ -1,12 +1,7 @@
 import logging
-from datetime import datetime, timedelta
 from typing import Dict, List
-
 from app import db
 from app.udaconnect.models import Person
-from app.udaconnect.schemas import PersonSchema
-from geoalchemy2.functions import ST_AsText, ST_Point
-from sqlalchemy.sql import text
 
 logging.basicConfig(level=logging.WARNING)
 logger = logging.getLogger("udaconnect-api")
@@ -19,7 +14,6 @@ class PersonService:
         new_person.first_name = person["first_name"]
         new_person.last_name = person["last_name"]
         new_person.company_name = person["company_name"]
-
         db.session.add(new_person)
         db.session.commit()
 
