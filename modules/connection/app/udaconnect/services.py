@@ -16,13 +16,6 @@ class ConnectionService:
     @staticmethod
     def find_contacts(person_id: int, start_date: datetime, end_date: datetime, meters=5
     ) -> List[Connection]:
-        """
-        Finds all Person who have been within a given distance of a given Person within a date range.
-
-        This will run rather quickly locally, but this is an expensive method and will take a bit of time to run on
-        large datasets. This is by design: what are some ways or techniques to help make this data integrate more
-        smoothly for a better user experience for API consumers?
-        """
         locations: List = db.session.query(Location).filter(
             Location.person_id == person_id
         ).filter(Location.creation_time < end_date).filter(
@@ -90,7 +83,6 @@ class LocationService:
             .one()
         )
 
-        # Rely on database to return text form of point to reduce overhead of conversion in app code
         location.wkt_shape = coord_text
         return location
 

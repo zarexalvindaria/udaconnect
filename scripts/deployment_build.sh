@@ -54,5 +54,5 @@ kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.26.0-kaf
 
 
  # inspect table values (postgres-5f676c995d-sdlnd is the pod id)
- kubectl exec -it postgres-5f676c995d-sdlnd -- psql -d geoconnections -U ct_admin -c '\x' -c 'SELECT * FROM public.location;'
- kubectl exec -it postgres-5f676c995d-sdlnd -- psql -d geoconnections -U ct_admin -c '\x' -c 'SELECT * FROM public.person;'
+ kubectl exec -it postgres-5f676c995d-mh7qk -- psql -d geoconnections -U ct_admin -c '\x' -c 'SELECT * FROM public.location;'
+ kubectl exec -it postgres-5f676c995d-mh7qk -- psql -d geoconnections -U ct_admin -c '\x' -c 'SELECT * FROM public.person;'
